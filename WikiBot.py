@@ -1,8 +1,11 @@
 from bs4 import BeautifulSoup
 import re
 import urllib.request
-import urllib
 import tweepy
+import time
+import os
+
+from PrivateKeys import *
 
 	
 url = 'https://en.wikipedia.org/wiki/Main_Page'
@@ -27,10 +30,10 @@ for tag in div_mp_dyk.find_all('li'):
 	
 	#adds string to array if it contains "that", which shows it is a fact
 	if 'that' in tag.text:
-		factArray.append(("Did you know " + tag.text[4:])[0:139])
+		factArray.append("Did you know " + tag.text[4:])
 	
-for fact in factArray:
-	print(fact)
+#for fact in factArray:
+#	print(fact)
 	
 
 
@@ -42,33 +45,34 @@ for image in images:
 	if imurl == "h":
 		imurl = "https:"+image['src']
 	
-print(imurl)
+#print(imurl)
 f = open('1.jpg','wb')
 f.write(urllib.request.urlopen(imurl).read())
 f.close()
 
-image = open('1.jpg','rb')
+image = open('C:/Users/trose/Documents/programming/WikiBot/1.jpg','rb')
 
 
 
-"""
-#have to fill this in with my info
+'''
+#have to fill this in with your info
 consumer_key = ''
-consumer_token = ''
+consumer_secret = ''
 access_token = ''
 access_token_secret = '' 
+'''
 
 #"signing into account"
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token, access_secret)
+auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
 #posting facts to Twitter
 for fact in factArray:  
 	if "pictured" in fact:
-		api.update_with_media(image, status=fact)
+		#print(fact)
+		api.update_with_media(media=image, status=fact, filename='1.jpg')
 	else:
-		api.update_with_media(status=fact)
-		
-    time.sleep(200)
-"""
+		#print(fact)
+		api.update_status(fact)
+	time.sleep(2)
