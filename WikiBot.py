@@ -7,7 +7,6 @@ import os
 
 from PrivateKeys import *
 
-	
 url = 'https://en.wikipedia.org/wiki/Main_Page'
 
 #just testing
@@ -34,18 +33,22 @@ for tag in div_mp_dyk.find_all('li'):
 	
 #for fact in factArray:
 #	print(fact)
-	
 
 
 #downloads image
 images = soup.find_all('img', {'src':re.compile('.jpg')})
 imurl = "h"
 for image in images: 
+	#to get image for specific fact, as long as it is the first with "mp-dyk" id in tag
+	if [p.get('id') for p in image.findAllPrevious(id='mp-dyk')]:
+		if imurl == "h":
+			imurl = "https:"+image['src']
 	#print(image['src']+'\n')
-	if imurl == "h":
-		imurl = "https:"+image['src']
+	#if imurl == "h":
+	#	imurl = "https:"+image['src']
 	
 #print(imurl)
+
 f = open('1.jpg','wb')
 f.write(urllib.request.urlopen(imurl).read())
 f.close()
