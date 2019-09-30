@@ -8,6 +8,6 @@ https://twitter.com/WikiDailyFacts1 (@WikiDailyFacts1)
 ## Finishing the program
 If you want to use this, you will have to create a Twitter Developer account and insert your private keys before being able to post.
 
-##Automatic Scheduling
+## Automatic Scheduling
 Follow instructions here: https://datatofish.com/python-script-windows-scheduler/
 Replace file paths in RunBot.py with local paths
