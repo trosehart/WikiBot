@@ -43,6 +43,10 @@ for image in images:
 	if [p.get('id') for p in image.findAllPrevious(id='mp-dyk')]:
 		if imurl == "h":
 			imurl = "https:"+image['src']
+			pos = imurl.find('jpg');
+			imurl = imurl[0:pos+3]
+			imurl = imurl.replace('thumb/','')
+			print(imurl)
 	#print(image['src']+'\n')
 	#if imurl == "h":
 	#	imurl = "https:"+image['src']
