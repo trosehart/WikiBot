@@ -10,4 +10,4 @@ If you want to use this, you will have to create a Twitter Developer account and
 
 ## Automatic Scheduling
 Follow instructions here: https://datatofish.com/python-script-windows-scheduler/
-Replace file paths in RunBot.py with local paths
+Replace file paths in RunBot.bat with local paths
