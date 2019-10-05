@@ -46,7 +46,7 @@ for image in images:
 			pos = imurl.find('jpg');
 			imurl = imurl[0:pos+3]
 			imurl = imurl.replace('thumb/','')
-			print(imurl)
+			#print(imurl)
 	#print(image['src']+'\n')
 	#if imurl == "h":
 	#	imurl = "https:"+image['src']
@@ -77,6 +77,9 @@ api = tweepy.API(auth)
 #posting facts to Twitter
 for fact in factArray:  
 	if "pictured" in fact:
+		#print(fact)
+		api.update_with_media(media=image, status=fact, filename='1.jpg')
+	elif "portrait shown" in fact:
 		#print(fact)
 		api.update_with_media(media=image, status=fact, filename='1.jpg')
 	else:
