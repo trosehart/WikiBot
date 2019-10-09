@@ -11,3 +11,8 @@ If you want to use this, you will have to create a Twitter Developer account and
 ## Automatic Scheduling
 Follow instructions here: https://datatofish.com/python-script-windows-scheduler/
 Replace file paths in RunBot.bat with local paths
+
+
+# WikiComment
+
+This searches Twitter for tweets that contain "what is," and replies with a completely random Wikipedia article.  I have RunComment.bat set to run every half hour.
