@@ -9,10 +9,6 @@ from PrivateKeys import *
 
 url = 'https://en.wikipedia.org/wiki/Main_Page'
 
-#just testing
-#for a in range(10):
-#	print(a)
-
 response = urllib.request.urlopen(url)
 soup = BeautifulSoup(response,'html.parser')
 
