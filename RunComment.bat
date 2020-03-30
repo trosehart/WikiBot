@@ -1,1 +1,1 @@
-"C:\Users\trose\AppData\Local\Programs\Python\Python37-32\python.exe" "C:/Users/trose/Documents/programming/WikiBot/WikiComment.py" %* pause
+"C:\cygwin64\bin\python3.8" "C:/Users/trose/Documents/programming/WikiBot/WikiComment.py" %* pause
