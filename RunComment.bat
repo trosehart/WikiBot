@@ -1,1 +1,1 @@
-"C:\cygwin64\bin\python3.8" "C:/Users/trose/Documents/programming/WikiBot/WikiComment.py" %* pause
+"C:\cygwin64\bin\python3.6" "C:/Users/trose/OneDrive/Documents/github/WikiBot/WikiComment.py" %* pause

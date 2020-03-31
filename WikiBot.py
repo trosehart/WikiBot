@@ -4,10 +4,17 @@ import urllib.request
 import tweepy
 import time
 import os
+from random import seed
+from random import random
 
 from PrivateKeys import *
 
 url = 'https://en.wikipedia.org/wiki/Main_Page'
+cur_dir = os.getcwd()
+
+seed(1)
+ran_int = int(random()*1000000)
+image_name = str(ran_int) + ".jpg"
 
 response = urllib.request.urlopen(url)
 soup = BeautifulSoup(response,'html.parser')
@@ -49,11 +56,11 @@ for image in images:
 	
 #print(imurl)
 
-f = open('1.jpg','wb')
+f = open(image_name,'wb')
 f.write(urllib.request.urlopen(imurl).read())
 f.close()
 
-image = open('C:/Users/trose/Documents/programming/WikiBot/1.jpg','rb')
+image = open(cur_dir + '/' + image_name,'rb')
 
 
 
@@ -74,11 +81,14 @@ api = tweepy.API(auth)
 for fact in factArray:  
 	if "pictured" in fact:
 		#print(fact)
-		api.update_with_media(media=image, status=fact, filename='1.jpg')
+		api.update_with_media(media=image, status=fact, filename=image_name)
 	elif "portrait shown" in fact:
 		#print(fact)
-		api.update_with_media(media=image, status=fact, filename='1.jpg')
+		api.update_with_media(media=image, status=fact, filename=image_name)
 	else:
 		#print(fact)
 		api.update_status(fact)
 	time.sleep(2)
+
+time.sleep(5)
+os.remove(image_name)
