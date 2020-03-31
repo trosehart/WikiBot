@@ -1,2 +1,4 @@
-"C:\cygwin64\bin\python3.6" "C:/Users/trose/OneDrive/Documents/github/WikiBot/WikiComment.py" 
-%* pause
+@echo off
+
+cd C:\cygwin64\bin
+bash --login -i C:/Users/trose/OneDrive/Documents/github/WikiBot/run_comment.sh

@@ -42,6 +42,11 @@ search_results = api.search(q="what is", count=NUM_TWEETS_TO_SEARCH)
 twt2respond = findTweet(search_results,NUM_TWEETS_TO_SEARCH)
 #print(twt2respond.text)
 
+if not twt2respond:
+    print("Could not find valid tweet")
+    print("Exiting")
+    exit(0)
+
 name = twt2respond.user.screen_name
 reply = "@"+name+" "+url
 twtid = twt2respond.id;
