@@ -39,7 +39,7 @@ api = tweepy.API(auth)
 
 search_results = api.search(q="what is", count=NUM_TWEETS_TO_SEARCH)
 
-twt2respond = findTweet(search_results,NUM_TWEETS_TO_SEARCH)
+twt2respond = findTweet(search_results, NUM_TWEETS_TO_SEARCH)
 #print(twt2respond.text)
 
 if not twt2respond:

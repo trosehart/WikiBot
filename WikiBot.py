@@ -79,12 +79,10 @@ api = tweepy.API(auth)
 
 #posting facts to Twitter
 for fact in factArray:  
-	if "pictured" in fact:
+	if "pictured" in fact or "portrait shown" in fact or "depicted" in fact:
 		#print(fact)
 		api.update_with_media(media=image, status=fact, filename=image_name)
-	elif "portrait shown" in fact:
-		#print(fact)
-		api.update_with_media(media=image, status=fact, filename=image_name)
+
 	else:
 		#print(fact)
 		api.update_status(fact)
