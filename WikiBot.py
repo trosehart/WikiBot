@@ -28,11 +28,11 @@ factArray = []
 #loops through the <div id=mp-dyk> tag, finding everything with <li> tags
 for tag in div_mp_dyk.find_all('li'):
     #prints the tag content
-	#print(tag.text)
-	
-	#adds string to array if it contains "that", which shows it is a fact
-	if 'that' in tag.text:
-		factArray.append("Did you know " + tag.text[4:])
+    #print(tag.text)
+
+    #adds string to array if it contains "that", which shows it is a fact
+    if 'that' in tag.text:
+        factArray.append("Did you know " + tag.text[4:])
 	
 #for fact in factArray:
 #	print(fact)
@@ -42,17 +42,17 @@ for tag in div_mp_dyk.find_all('li'):
 images = soup.find_all('img', {'src':re.compile('.jpg')})
 imurl = "h"
 for image in images: 
-	#to get image for specific fact, as long as it is the first with "mp-dyk" id in tag
-	if [p.get('id') for p in image.findAllPrevious(id='mp-dyk')]:
-		if imurl == "h":
-			imurl = "https:"+image['src']
-			pos = imurl.find('jpg');
-			imurl = imurl[0:pos+3]
-			imurl = imurl.replace('thumb/','')
-			#print(imurl)
-	#print(image['src']+'\n')
-	#if imurl == "h":
-	#	imurl = "https:"+image['src']
+    #to get image for specific fact, as long as it is the first with "mp-dyk" id in tag
+    if [p.get('id') for p in image.findAllPrevious(id='mp-dyk')]:
+        if imurl == "h":
+            imurl = "https:"+image['src']
+            pos = imurl.find('jpg');
+            imurl = imurl[0:pos+3]
+            imurl = imurl.replace('thumb/','')
+            #print(imurl)
+    #print(image['src']+'\n')
+    #if imurl == "h":
+    #	imurl = "https:"+image['src']
 	
 #print(imurl)
 
@@ -79,14 +79,18 @@ api = tweepy.API(auth)
 
 #posting facts to Twitter
 for fact in factArray:  
-	if "pictured" in fact or "portrait shown" in fact or "depicted" in fact:
-		#print(fact)
-		api.update_with_media(media=image, status=fact, filename=image_name)
+    if "pictured" in fact or "portrait shown" in fact or "depicted" in fact or "shown)" in fact:
+        #print(fact)
+        try:
+            api.update_with_media(media=image, status=fact, filename=image_name)
+        
+        except:
+            print("Image unable to be posted")
 
-	else:
-		#print(fact)
-		api.update_status(fact)
-	time.sleep(2)
+    else:
+        #print(fact)
+        api.update_status(fact)
+    time.sleep(2)
 
 time.sleep(5)
 os.remove(image_name)
